@@ -1,0 +1,40 @@
+<html>
+  <%- include('header'); -%>
+  <body>
+    <%- include('navbar'); -%>
+    <h4 class="h4 text-center mt-4 mb-4">New Record</h4>
+    <form action="/note" method="POST">
+      <div class="container">
+        <% Object.keys(noteColDescName).forEach((colDescription, index) => {%>
+        <div class="row form-row form-group">
+          <label for="Property_<%=index%>" class="col-sm-3 col-form-label"
+            ><%= colDescription%>:
+          </label>
+          <div class="col-sm-8">
+            <% if(0 === index) { %>
+            <input
+              type="datetime-local"
+              id="Property_<%=index%>"
+              class="form-control"
+              name="<%= noteColDescName[colDescription] %>"
+              required
+            />
+            <% } else { %>
+            <textarea
+              type="text"
+              id="Property_<%=index%>"
+              class="form-control"
+              name="<%= noteColDescName[colDescription] %>"
+            ></textarea>
+            <% }%>
+            <br />
+          </div>
+        </div>
+        <%}) %>
+        <input type="submit" class="btn btn-dark" value="Submit" />
+      </div>
+    </form>
+
+    <%- include('footer'); -%>
+  </body>
+</html>

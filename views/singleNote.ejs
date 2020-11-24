@@ -1,0 +1,21 @@
+<html>
+  <%- include('header'); -%>
+  <body>
+    <%- include('navbar'); -%> <% Object.keys(displayData).forEach((colName,
+    index) => { %> <%# Get the description for this column and fill the data in
+    html %>
+    <%if(colName !== 'id' ) {%>
+    <div class="container text-center">
+      <div class="row justify-content-around">
+        <div class="col ">
+          <section>
+            <h4><%= noteColNameDesc[colName] %></h2>
+            <p><%= displayData[colName]%></p>
+          </section>
+        </div>
+      </div>      
+    </div>
+    <%}%>
+    <% }) %> <%- include('footer'); -%>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+  <%- include('header'); -%>
+  <body>
+    <%- include('navbar'); -%>
+    <form action="/note/<%=requestedItemIndex%>/edit?_method=PUT" method="POST">
+      <div class="container">
+        <% Object.keys(displayData).forEach((colName, index) => { %> <%# Get the
+        description for this column and fill the data in html %> <%if(colName
+        !== 'id' ) {%>
+        <div class="form-row form-group">
+          <label for="Property_<%=index%>" class="col-sm-3 col-form-label"
+            ><%=noteColNameDesc[colName]%>:
+          </label>
+          <div class="col-sm-5">
+            <% if(colName === 'noted_date_time') { %>
+            <input
+              type="datetime-local"
+              id="Property_<%=index%>"
+              class="form-control"
+              name="<%=colName%>"
+              value="<%=displayData[colName]%>"
+            />
+
+            <% } else { %>
+            <textarea
+              type="text"
+              id="Property_<%=index%>"
+              class="form-control"
+              name="<%=colName%>"
+            >
+              <%=displayData[colName]%>
+              </textarea
+            >
+            <% } %>
+          </div>
+        </div>
+
+        <%}%> <% }) %>
+        <input type="submit" class="btn bg-dark" value="Submit" />
+      </div>
+    </form>
+    <%- include('footer'); -%>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+  <%- include('header'); -%>
+  <body>
+    <%- include('navbar'); -%>
+    <div class="container">
+      <!--Header-->
+      <div class="row border">
+        <div class="col">ID</div>
+        <%Object.keys(noteColNameDesc).forEach((singleCol) =>{%>
+        <div class="col"><%=noteColNameDesc[singleCol]%></div>
+        <%})%>
+      </div>
+      <!--Data-->
+      <% allNotesArray.forEach((singleNote) =>{ %>
+      <div class="row border">
+        <div class="col custom-scroll"><%=singleNote['id']%></div>
+        <%Object.keys(noteColNameDesc).forEach((singleCol) =>{%>
+        <div class="col custom-scroll"><%=singleNote[singleCol]%></div>
+        <%})%>
+      </div>
+      <%})%>
+    </div>
+    <%- include('footer'); -%>
+  </body>
+</html>
