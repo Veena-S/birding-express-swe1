@@ -1,4 +1,4 @@
-import jsSHA from 'jsSHA';
+import jsSHA from 'jssha';
 import { addNewUser, getUserInfo } from './psqlDataHandler.js';
 
 const saltEnvVar = process.env.SALT_ENV_VAR;
