@@ -1,0 +1,12 @@
+<% if(behaviourListItems.length !== 0){ %>
+<div class="row form-row form-group">
+  <label class="col-sm-3 col-form-label">Behaviours:</label>
+  <div class="col-sm-8 border">
+    <%behaviourListItems.forEach((rowBehaviour) => {%>
+    <!--For each behaviour create a check box-->
+    <label class="col-sm-2 col-form-label"><%=rowBehaviour.behaviour%></label>
+    <input type="checkbox" name="behaviour_ids" value="<%=rowBehaviour.id%>" />
+    <%});%>
+  </div>
+</div>
+<% } %>

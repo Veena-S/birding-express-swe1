@@ -2,21 +2,59 @@
   <%- include('header'); -%>
   <body>
     <%- include('navbar'); -%>
+    <h4 class="h4 text-center mt-4 mb-4">Birds Around Me</h4>
     <div class="container">
       <!--Header-->
-      <div class="row border">
-        <div class="col">ID</div>
+      <div class="row border-bottom justify-content-between m-2">
+        <div class="col-sm-1">ID</div>
         <%Object.keys(noteColNameDesc).forEach((singleCol) =>{%>
-        <div class="col"><%=noteColNameDesc[singleCol]%></div>
+        <div class="col-sm-3 font-weight-bold">
+          <%=noteColNameDesc[singleCol]%>
+        </div>
         <%})%>
+        <div class="col-sm-2">
+          <div class="row justify-content-center"></div>
+        </div>
       </div>
       <!--Data-->
-      <% allNotesArray.forEach((singleNote) =>{ %>
-      <div class="row border">
-        <div class="col custom-scroll"><%=singleNote['id']%></div>
+      <% allNotesArray.forEach((singleNote, index) =>{ %>
+      <div class="row border-bottom justify-content-between m-2">
+        <!-- <div class="col custom-scroll"><%#=singleNote['id']%></div> -->
+        <div class="col-sm-1 custom-scroll"><%=index+1%></div>
         <%Object.keys(noteColNameDesc).forEach((singleCol) =>{%>
-        <div class="col custom-scroll"><%=singleNote[singleCol]%></div>
-        <%})%>
+        <!---->
+        <% if(singleCol === 'noted_date_time') {%>
+        <div class="col-sm-3 custom-scroll">
+          <%=singleNote[singleCol].toUTCString()%>
+        </div>
+        <%} else {%>
+        <div class="col-sm-3 custom-scroll"><%=singleNote[singleCol]%></div>
+        <%}%> <%})%>
+        <div class="col-sm-2">
+          <div class="row justify-content-center">
+            <form
+              class="btn-form mr-1"
+              action="/note/<%=singleNote['id']%>"
+              method="GET"
+            >
+              <button class="btn btn-sm btn-primary">View</button>
+            </form>
+            <form
+              class="btn-form mr-1"
+              action="/note/<%=singleNote['id']%>/edit"
+              method="GET"
+            >
+              <button class="btn btn-sm btn-success">Edit</button>
+            </form>
+            <form
+              class="btn-form mr-1"
+              action="/note/<%=singleNote['id']%>/delete?_method=DELETE"
+              method="POST"
+            >
+              <button class="btn btn-sm btn-Danger">Delete</button>
+            </form>
+          </div>
+        </div>
       </div>
       <%})%>
     </div>

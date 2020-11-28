@@ -5,6 +5,12 @@
     <h4 class="h4 text-center mt-4 mb-4">New Record</h4>
     <form action="/note" method="POST">
       <div class="container">
+        <!--Species selection box-->
+        <%- include('speciesList', {speciesItems: speciesList} ) %>
+        <!--Behaviour selection check boxes-->
+        <%- include('behaviourList', {behaviourListItems: behaviourList} ) %>
+
+        <!--To Enter Data-->
         <% Object.keys(noteColDescName).forEach((colDescription, index) => {%>
         <div class="row form-row form-group">
           <label for="Property_<%=index%>" class="col-sm-3 col-form-label"

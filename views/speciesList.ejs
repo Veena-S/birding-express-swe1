@@ -1,0 +1,14 @@
+<!--Species selection box-->
+<%if(speciesItems.length !== 0 ){%>
+<div class="row form-row form-group">
+  <label for="species" class="col-sm-3 col-form-label">Species:</label>
+  <div class="col-sm-8">
+    <select name="species_id" id="species">
+      <%speciesItems.forEach((rowSpecies) => {%>
+      <!--Value in "value" will be submitted, i.e. species id. Not name.-->
+      <option value="<%=rowSpecies.id%>"><%= rowSpecies.name %></option>
+      <%});%>
+    </select>
+  </div>
+</div>
+<%}%>

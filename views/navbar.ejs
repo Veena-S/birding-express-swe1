@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a href="/" class="navbar-brand">UFO</a>
+  <a href="/" class="navbar-brand">Birds Around Me</a>
   <button
     class="navbar-toggler"
     data-toggle="collapse"
@@ -10,11 +10,80 @@
   <div class="collapse navbar-collapse" id="navbarMenu">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a href="/sighting" class="nav-link">Add</a>
+        <a href="/note" class="nav-link">New Record</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Account
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="navbarDropdown"
+        >
+          <a
+            class="dropdown-item"
+            href="/signup"
+            class="nav-link"
+            data-toggle="modal"
+            data-target="#signup-modal-form"
+            >Create Account</a
+          >
+          <a
+            class="dropdown-item"
+            href="/login"
+            class="nav-link"
+            data-toggle="modal"
+            data-target="#login-modal-form"
+            >Login</a
+          >
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"><%-include('logoutForm')-%></a>
+        </div>
+      </li>
+      <!-- 
+      <li class="nav-item">
+        <a
+          href="/signup"
+          class="nav-link"
+          data-toggle="modal"
+          data-target="#signup-modal-form"
+          >Create Account</a
+        >
       </li>
       <li class="nav-item">
-        <a href="/shapes" class="nav-link">Shapes</a>
+        <a
+          href="/login"
+          class="nav-link"
+          data-toggle="modal"
+          data-target="#login-modal-form"
+          >Login</a
+        >
       </li>
+      <li class="nav-item"> -->
+      <!-- <a
+          href="/logout"
+          class="nav-link"
+          data-toggle="modal"
+          data-target="#logout-modal-form"
+          >Logout</a
+        > -->
+      <!-- <%#-include('logoutForm')-%>
+      </li> -->
     </ul>
   </div>
 </nav>
+<%-include('signupForm', { displayType: 'signup' })-%>
+<!--  -->
+<%-include('loginForm', { displayType: 'login' })-%>
+
+<!--  -->
+<%#-include('logoutForm')-%>

@@ -1,4 +1,5 @@
 .custom-scroll {
-  height: 150px;
-  overflow-y: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

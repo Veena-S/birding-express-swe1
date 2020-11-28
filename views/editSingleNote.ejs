@@ -2,12 +2,14 @@
   <%- include('header'); -%>
   <body>
     <%- include('navbar'); -%>
+    <h4 class="h4 text-center mt-4 mb-4">Edit</h4>
     <form action="/note/<%=requestedItemIndex%>/edit?_method=PUT" method="POST">
       <div class="container">
         <% Object.keys(displayData).forEach((colName, index) => { %> <%# Get the
         description for this column and fill the data in html %> <%if(colName
         !== 'id' ) {%>
         <div class="form-row form-group">
+          <%if(noteColNameDesc[colName] !== undefined){%>
           <label for="Property_<%=index%>" class="col-sm-3 col-form-label"
             ><%=noteColNameDesc[colName]%>:
           </label>
@@ -20,7 +22,6 @@
               name="<%=colName%>"
               value="<%=displayData[colName]%>"
             />
-
             <% } else { %>
             <textarea
               type="text"
@@ -28,15 +29,14 @@
               class="form-control"
               name="<%=colName%>"
             >
-              <%=displayData[colName]%>
-              </textarea
+<%=displayData[colName]%></textarea
             >
             <% } %>
           </div>
+          <%}%>
         </div>
-
         <%}%> <% }) %>
-        <input type="submit" class="btn bg-dark" value="Submit" />
+        <input type="submit" class="btn btn-dark" value="Submit" />
       </div>
     </form>
     <%- include('footer'); -%>

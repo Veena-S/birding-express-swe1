@@ -1,0 +1,21 @@
+<form action="/note/<%=requestedItemIndex%>/comment" method="POST">
+  <div class="container mt-4">
+    <div class="form-row form-group">
+      <label for="comment" class="col-sm-3 col-form-label"
+        >Your Comments:
+      </label>
+      <div class="col-sm-5">
+        <textarea
+          rows="4"
+          type="text"
+          id="comment"
+          class="form-control"
+          name="comment"
+          placeholder="Type your comments here"
+        ></textarea>
+      </div>
+    </div>
+
+    <input type="submit" class="btn btn-dark" value="Post your Comments" />
+  </div>
+</form>

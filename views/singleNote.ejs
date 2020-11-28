@@ -1,21 +1,35 @@
 <html>
   <%- include('header'); -%>
   <body>
-    <%- include('navbar'); -%> <% Object.keys(displayData).forEach((colName,
+    <%- include('navbar'); -%> 
+    <h4 class="h4 text-center mt-4 mb-4">Details</h4>
+    <!--Displaying the note-->
+    <% Object.keys(displayData).forEach((colName,
     index) => { %> <%# Get the description for this column and fill the data in
     html %>
     <%if(colName !== 'id' ) {%>
-    <div class="container text-center">
+    <div class="container">
       <div class="row justify-content-around">
         <div class="col ">
           <section>
-            <h4><%= noteColNameDesc[colName] %></h2>
-            <p><%= displayData[colName]%></p>
+            <%if(colName in noteColNameDesc) { %>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h5><%= noteColNameDesc[colName] %></h25>
+                </div>
+                <div class="col-sm-9">
+                  <p><%= displayData[colName]%></p>
+                </div>
+              </div>
+            <%}%>
           </section>
         </div>
       </div>      
     </div>
     <%}%>
-    <% }) %> <%- include('footer'); -%>
+    <% }) %>
+    <%- include('addCommentsForm', {requestedItemIndex: displayData['id']} ); -%>
+    <%- include('displayComments', {data: noteComments}); -%>
+    <%- include('footer'); -%>
   </body>
 </html>

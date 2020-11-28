@@ -1,0 +1,18 @@
+<!--Expects the row of comments as input, in the name of 'data'-->
+<div class="container">
+  <h6>Previous Comments</h6>
+  <% data.forEach((singleCommentRow) => {%>
+  <div class="media border-top">
+    <h6 class="mr-3">User_<%=singleCommentRow.user_id%></h6>
+    <div class="media-body">
+      <%= singleCommentRow.comments %>
+      <ul class="list-unstyled list-inline media-detail pull-left">
+        <li>
+          <i>Posted On: </i><%=singleCommentRow.comment_date.toDateString()%>
+        </li>
+        <!--TO DO: As further items in the list, can add, like icon, edit, reply-->
+      </ul>
+    </div>
+  </div>
+  <%}); %>
+</div>

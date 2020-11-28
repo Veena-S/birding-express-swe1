@@ -1,0 +1,97 @@
+<div class="container modal fade" id="signup-modal-form">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Sign-up form</h2>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <%if(displayType === 'signup') { %>
+      <div class="modal-body">
+        <form action="/signup" method="POST" id="modal-details">
+          <!--First and last names-->
+          <div class="form-row">
+            <!--First name-->
+            <div class="form-group col-md-6">
+              <label for="firstname">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                name="firstname"
+                placeholder="First Name"
+              />
+            </div>
+            <!--Last name-->
+            <div class="form-group col-md-6">
+              <label for="lastname">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                name="lastname"
+                placeholder="Last Name"
+              />
+            </div>
+          </div>
+          <!--User name-->
+          <div class="form-group">
+            <label for="username">Choose a User name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              placeholder="user name to be displayed"
+            />
+          </div>
+          <!--email id and password-->
+          <div class="form-row">
+            <!--email id-->
+            <div class="form-group col-md-6">
+              <label for="inputEmail">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail"
+                name="inputEmail"
+                placeholder="Email"
+              />
+            </div>
+            <!--Password-->
+            <div class="form-group col-md-6">
+              <label for="inputPassword">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword"
+                name="inputPassword"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--Submit form button-->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" form="modal-details">
+          Create Account
+        </button>
+      </div>
+      <% } else if(displayType === 'signup-done') {%>
+      <!--Signup is completed. Show the success message in the popup-->
+      <p><%= displayType%></p>
+      <div class="modal-body">
+        <p>Successfully created user account!!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+      <% }%>
+    </div>
+    <!--Modal content ends-->
+  </div>
+</div>
