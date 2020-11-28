@@ -1,4 +1,3 @@
-import { request } from 'express';
 import pg from 'pg';
 
 const DB_NAME = 'birding';
@@ -78,12 +77,35 @@ export const COL_COMMENTS_DATE = 'comment_date';
 
 // Initialize the DB connection
 const { Pool } = pg;
-const pgConnectionConfigs = {
-  user: 'veenas',
-  host: 'localhost',
-  database: DB_NAME,
-  port: 5432, // Postgres server always runs on this port by default
-};
+// const pgConnectionConfigs = {
+//   user: 'veenas',
+//   host: 'localhost',
+//   database: DB_NAME,
+//   port: 5432, // Postgres server always runs on this port by default
+// };
+
+// create separate DB connection configs for production vs non-production environments.
+// ensure our server still works on our local machines.
+let pgConnectionConfigs;
+if (process.env.ENV === 'PRODUCTION') {
+  // determine how we connect to the remote Postgres server
+  pgConnectionConfigs = {
+    user: 'postgres',
+    // set DB_PASSWORD as an environment variable for security.
+    password: process.env.DB_PASSWORD,
+    host: 'localhost',
+    database: DB_NAME,
+    port: 5432,
+  };
+} else {
+  // determine how we connect to the local Postgres server
+  pgConnectionConfigs = {
+    user: 'veenas',
+    host: 'localhost',
+    database: DB_NAME,
+    port: 5432,
+  };
+}
 
 const pool = new Pool(pgConnectionConfigs);
 

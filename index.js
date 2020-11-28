@@ -13,7 +13,10 @@ import {
   handleLoginFormDisplayRequest, handleLoginRquest, handleLogoutRequest,
 } from './httpUserHandler.js';
 
-const PORT = 3004;
+// const PORT = 3004;
+const PORT = process.argv[2];
+
+console.log(process.argv);
 
 const app = express();
 
